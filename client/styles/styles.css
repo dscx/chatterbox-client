@@ -1,18 +1,18 @@
 body {
-    background: #eee;
+    background: #fff;
     text-align: center;
     padding: 0 25px;
     font-family: arial, sans-serif;
 }
 
 #main {
-    width: 500px;
+    width: auto;
     margin: auto;
+    height: auto;
     text-align: left;
     background: white;
     padding: 50px 60px;
-    border: solid #ddd;
-    border-width: 0 1px 1px 1px;
+
 }
 
 #main h1 {
@@ -60,12 +60,29 @@ form input[type=text] {
 }
 
 #chats {
-    padding: 5px;
-    margin-bottom: 5px;
     background-color: #eee;
     overflow: scroll;
-    height: 400px;
-    width: auto;
+    float: left;
+    height: 500px;
+    width: 500px;
+    padding: 20px;
+    margin-left: 10px;
+}
+
+#rooms {
+    background-color: #ccc;
+    overflow: scroll;
+    float: left;
+    height: 500px;
+    width: 180px;
+    padding: 20px;
+}
+
+#sendBox {
+    float: left;
+    padding-top: 5px;
+    padding-left: 15px;
+    padding-bottom: 20px;
 }
 
 .chat .username {
@@ -84,4 +101,10 @@ form input[type=text] {
 
 .spinner img {
     padding: 10px;
+}
+
+#newRoomBox{
+    float: left;
+    padding-top: 5px;
+    padding-bottom: 20px;
 }

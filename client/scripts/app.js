@@ -43,6 +43,7 @@ var app = {
 
         }
         rooms = _.uniq(rooms);
+        $('#rooms').empty();
         rooms.forEach(function(room){
           $('#rooms').append('<p>' + room + '</p>');
         });
