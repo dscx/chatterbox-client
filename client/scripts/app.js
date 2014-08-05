@@ -8,21 +8,24 @@ var app = {
     app.fetch();
     $('#sendButton').on('click', app.addMessage);
   },
-  server: 'https://api.parse.com/1/classes/chatterbox?order=-createdAt',
+  server: 'https://api.parse.com/1/classes/chatterbox',
   send: function(message) {
     $.ajax({
       type: 'POST',
       url: app.server,
-      data: JSON.stringify(message)
+      data: JSON.stringify(message),
+      contentType: 'application/json',
+
     })
   },
   fetch: function(){
     $.ajax({
       type: 'GET',
-      url: app.server,
+      url: 'https://api.parse.com/1/classes/chatterbox?order=-createdAt',
       success: function(data){
-        console.log(data);
+      //  console.log(data);
         var rooms = [];
+        app.clearMessages();
         for(var i = 0; i < data.results.length; i++){
           if(data.results[i].text !== undefined){
             data.results[i].text = data.results[i].text.replace(/</g, "&lt;");
@@ -50,10 +53,15 @@ var app = {
     $('#chats').empty();
   },
   addMessage: function(message) {
-    message = $('#sendBox').find('#message');
-    console.log(message[0]["value"]);
-    //app.send(message);
-    //$('#chats').append('<div>' + message.text + '</div>');
+    var text = $('#sendBox').find('#message')[0].value;
+    //console.log(message[0].value);
+    var message = {
+      text: text,
+      username: window.location.search.slice(10)
+    };
+    app.send(message);
+    //resets text field
+    $("#message")[0].value = "";
   },
   addRoom: function(room){
     $('#roomSelect').append('<div>' + room +'</div>');
@@ -78,4 +86,5 @@ var app = {
 
 $(document).ready(function() {
   app.init();
+  setInterval(app.fetch, 1000);
 });
