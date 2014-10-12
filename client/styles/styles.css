@@ -85,7 +85,7 @@ form input[type=text] {
     padding-bottom: 20px;
 }
 
-.chat .username {
+.chats .username {
     font-weight: 800;
 }
 
@@ -107,4 +107,11 @@ form input[type=text] {
     float: left;
     padding-top: 5px;
     padding-bottom: 20px;
+}
+
+.in {
+   display: inline;
+}
+.isFriend{
+    font-weight: bold;
 }
